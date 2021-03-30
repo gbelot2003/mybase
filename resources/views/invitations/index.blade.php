@@ -81,6 +81,13 @@
 
                         <div class="form-group">
                             <div class="col-md-12">
+                                <label for="email" class="control-label">{{ __('Rol Type') }}</label>
+                                {{Form::select('role_id', $roles, null, ['class' => 'form-control'])}}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Send An Invitation') }}
                                 </button>

@@ -68,11 +68,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        $user->assignRole($data['role_id']);
+
+        return $user;
     }
 
     public function requestInvitation() {
@@ -84,8 +88,9 @@ class RegisterController extends Controller
         $invitation_token = $request->get('invitation_token');
         $invitation = Invitation::where('invitation_token', $invitation_token)->firstOrFail();
         $email = $invitation->email;
+        $role = $invitation->role_id;
 
-        return view('auth.register', compact('email'));
+        return view('auth.register', compact('email', 'role'));
     }
 
         /**

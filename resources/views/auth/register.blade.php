@@ -17,6 +17,7 @@
                             <div class="col-md-6">
                                 <input type="email" class="form-control disabled" value="{{ $email }}" disabled>
                                 <input id="email" type="hidden" class="form-control disabled" name="email" value="{{ $email }}">
+                                <input id="role_id" type="hidden" class="form-control disabled" name="role_id" value="{{ $role }}">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">

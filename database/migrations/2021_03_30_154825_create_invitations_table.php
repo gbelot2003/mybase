@@ -18,6 +18,7 @@ class CreateInvitationsTable extends Migration
             $table->string('email')->unique();
             $table->string('invitation_token', 32)->unique()->nullable();
             $table->timestamp('registered_at')->nullable();
+            $table->integer('role_id');
             $table->timestamps();
         });
     }
