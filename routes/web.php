@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UsersController;
 use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\Auth\RegisterController;
 
@@ -28,13 +29,16 @@ Route::get('register', [RegisterController::class, 'showRegistrationForm'])
 
 Route::get('register/request', [RegisterController::class, 'requestInvitation'])->name('requestInvitation');
 
-Route::post('invitations', [InvitationController::class, 'store'])->middleware('guest')->name('storeInvitation');
+Route::post('invitations', [InvitationController::class, 'store'])->middleware('auth')->name('storeInvitation');
+
 Route::group([
     'middleware' => ['auth'],
     'prefix' => 'invitations'
 ], function() {
     Route::get('/', [InvitationController::class, 'index'])->name('showInvitations');
 });
+
+Route::resource('users', UsersController::class)->name('*', 'users');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 

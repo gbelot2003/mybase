@@ -25,7 +25,8 @@ class InvitationController extends Controller
         $invitation->generateInvitationToken();
         $invitation->save();
 
-        return redirect()->route('requestInvitation')
-            ->with('success', 'Invitation to register successfully requested. Please wait for registration link.');
+        return redirect()->back()->with('success', 'Invitation to register successfully requested. Please wait for registration link.');
+        //return redirect()->route('requestInvitation')
+        //    ->with('success', 'Invitation to register successfully requested. Please wait for registration link.');
         }
 }

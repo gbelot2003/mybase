@@ -21,4 +21,9 @@ class Invitation extends Model
     public function getLink() {
         return urldecode(route('register') . '?invitation_token=' . $this->invitation_token);
     }
+
+    public function sendInvitation()
+    {
+
+    }
 }
