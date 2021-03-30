@@ -26,7 +26,6 @@ Route::get('register', [RegisterController::class, 'showRegistrationForm'])
   ->name('register')
   ->middleware('hasInvitation');
 
-
 Route::get('register/request', [RegisterController::class, 'requestInvitation'])->name('requestInvitation');
 
 Route::post('invitations', [InvitationController::class, 'store'])->middleware('guest')->name('storeInvitation');
@@ -36,8 +35,6 @@ Route::group([
 ], function() {
     Route::get('/', [InvitationController::class, 'index'])->name('showInvitations');
 });
-
-
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 

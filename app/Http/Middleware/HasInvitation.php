@@ -2,8 +2,8 @@
 
 namespace App\Http\Middleware;
 
-use App\Invitation;
 use Closure;
+use App\Models\Invitation;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class HasInvitation
